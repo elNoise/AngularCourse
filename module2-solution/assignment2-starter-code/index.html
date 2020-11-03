@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" ng-app="CheckOff">
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .emptyMessage {
+        font-weight: bold;
+        color: red;
+        font-size: 1.2em;
+      }
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+    </style>
+  </head>
+<body>
+  <div class="container">
+  <h1>Shopping List Check Off</h1>
+
+  <div class="row">
+
+    <!-- To Buy List -->
+    <div class="col-md-6" id="list1" ng-controller='ToBuyController as toBuy'>
+     <h2>To Buy:</h2>
+     <ul>
+
+       <li ng-repeat="item in toBuy.toBuyList">{{ item.quantity }} of {{ item.name }} <button ng-click=" toBuy.addItem($index, name)" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+
+
+     </ul>
+     <div ng-if="!toBuy.toBuyList.length!=0" class="emptyMessage">Everything is bought!</div>
+    </div>
+
+    <!-- Already Bought List -->
+    <div class="col-md-6" ng-controller='AlreadyBoughtController as alBou'>
+     <h2>Already Bought:</h2>
+     <ul>
+
+      <li ng-repeat="item in alBou.alBouList">{{ item.quantity }} of {{ item.name }}
+
+           </li>
+
+
+     </ul>
+     <div ng-show="!alBou.alBouList.length!=0" class="emptyMessage">Nothing bought yet.</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

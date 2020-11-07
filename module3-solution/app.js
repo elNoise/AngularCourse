@@ -43,10 +43,10 @@ function NarrowItDownController(MenuSearchService){
   ctrl.searchTerm = '';
   ctrl.found = [];
   ctrl.getMatchedMenuItems = function () {
-    console.log("SearchTerm seen in ctrl: ", ctrl.searchTerm);
+    // console.log("SearchTerm: ", ctrl.searchTerm);
     ctrl.found = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm)
 
-  console.log("ctrl.found as seen at ctrl: ", ctrl.found);
+  //console.log("found:", ctrl.found);
   }
   ctrl.removeItem = function(itemIndex){
     ctrl.found.splice(itemIndex,1)
